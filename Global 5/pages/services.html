@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Care & Services – Global 5 Hospital</title>
+    <meta name="description"
+        content="Explore patient care services at Global 5 Hospital including emergency care, ICU, diagnostics, rehabilitation and international patient services." />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-left"><span class="top-bar-item"><i class="fa-solid fa-phone"></i> Emergency:
+                    +91-22-4121-5555</span></div>
+        </div>
+    </div>
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-hospital"></i></div>
+                <div>
+                    <div class="logo-text" style="color:var(--gray-900)">Global 5 Hospital</div>
+                    <div class="logo-sub" style="color:var(--gray-500)">Caring for Life</div>
+                </div>
+            </a>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link" style="color:var(--gray-700)">Home</a>
+                <a href="about.html" class="nav-link" style="color:var(--gray-700)">About Us</a>
+                <a href="specialties.html" class="nav-link" style="color:var(--gray-700)">Specialties</a>
+                <a href="doctors.html" class="nav-link" style="color:var(--gray-700)">Doctors</a>
+                <a href="services.html" class="nav-link" style="color:var(--primary);font-weight:700">Patient Care</a>
+                <a href="packages.html" class="nav-link" style="color:var(--gray-700)">Packages</a>
+                <a href="blog.html" class="nav-link" style="color:var(--gray-700)">Blog</a>
+                <a href="contact.html" class="nav-link" style="color:var(--gray-700)">Contact</a>
+            </div>
+            <div class="nav-actions"><button class="btn btn-secondary btn-sm"
+                    onclick="document.getElementById('modalOverlay').classList.add('open')"><i
+                        class="fa-solid fa-calendar-check"></i> Book Appointment</button></div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-hospital"></i></div>
+                <div>
+                    <div class="logo-text" style="color:var(--gray-900)">Global 5 Hospital</div>
+                </div>
+            </div>
+            <div class="mobile-nav-close" id="mobileNavClose"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="../index.html" class="mobile-nav-link"><i class="fa-solid fa-home"></i> Home</a>
+            <a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-hospital-user"></i> About Us</a>
+            <a href="specialties.html" class="mobile-nav-link"><i class="fa-solid fa-stethoscope"></i> Specialties</a>
+            <a href="doctors.html" class="mobile-nav-link"><i class="fa-solid fa-user-doctor"></i> Doctors</a>
+            <a href="services.html" class="mobile-nav-link"><i class="fa-solid fa-hand-holding-heart"></i> Patient
+                Care</a>
+            <a href="packages.html" class="mobile-nav-link"><i class="fa-solid fa-box-open"></i> Packages</a>
+            <a href="blog.html" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> Blog</a>
+            <a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>Patient Care & Services</h1>
+        <div class="breadcrumb"><a href="../index.html">Home</a><i class="fa-solid fa-angle-right"></i><span>Patient
+                Care</span></div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-badge">Our Services</span>
+                <h2 class="section-title">Comprehensive Patient Care</h2>
+                <p class="section-subtitle">From admission to recovery, we ensure the highest standard of care at every
+                    step of your healthcare journey.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-truck-medical"></i></div>
+                    <h4>24/7 Emergency & Trauma</h4>
+                    <p>Dedicated trauma bays with rapid response teams, equipped for all medical emergencies including
+                        cardiac arrest, stroke, polytrauma and acute poisoning.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon" style="background:var(--secondary-light);color:var(--secondary)"><i
+                            class="fa-solid fa-bed-pulse"></i></div>
+                    <h4>Critical Care & ICU</h4>
+                    <p>Multi-specialty ICUs including Cardiac ICU, Neuro-ICU, Surgical ICU, PICU and NICU with
+                        one-to-one nursing and advanced life support.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon" style="background:#fff7ed;color:var(--accent)"><i
+                            class="fa-solid fa-microscope"></i></div>
+                    <h4>Advanced Diagnostics</h4>
+                    <p>3T MRI, 128-slice CT, PET-CT, digital X-ray, echocardiography, endoscopy and AI-powered pathology
+                        for rapid, accurate diagnoses.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-dna"></i></div>
+                    <h4>Genetic & Molecular Lab</h4>
+                    <p>Chromosomal analysis, molecular diagnostics, BRCA gene testing and next-generation sequencing for
+                        personalized medicine and cancer profiling.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon" style="background:var(--secondary-light);color:var(--secondary)"><i
+                            class="fa-solid fa-person-walking-with-cane"></i></div>
+                    <h4>Rehabilitation Center</h4>
+                    <p>Comprehensive physiotherapy, occupational therapy, speech therapy and neurological rehabilitation
+                        with dedicated therapists and modern equipment.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon" style="background:#fff7ed;color:var(--accent)"><i
+                            class="fa-solid fa-globe"></i></div>
+                    <h4>International Patient Services</h4>
+                    <p>Dedicated team offering visa assistance, airport transfers, translation, accommodation and
+                        end-to-end care coordination for medical tourists.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-syringe"></i></div>
+                    <h4>Blood Bank & Transfusion</h4>
+                    <p>24/7 blood bank with comprehensive components, leukoreduction filters, autologous blood donation
+                        and cell salvage programs.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon" style="background:var(--secondary-light);color:var(--secondary)"><i
+                            class="fa-solid fa-laptop-medical"></i></div>
+                    <h4>Telemedicine & e-Consult</h4>
+                    <p>Virtual OPD consultations with specialists via video call, digital prescriptions, and follow-up
+                        care from the comfort of your home.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon" style="background:#fff7ed;color:var(--accent)"><i
+                            class="fa-solid fa-utensils"></i></div>
+                    <h4>Nutrition & Dietetics</h4>
+                    <p>Personalized dietary counseling for diabetes, heart disease, obesity, renal disorders and
+                        post-surgical nutrition planning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why trust section -->
+    <section class="section" style="background:var(--gray-50)">
+        <div class="container">
+            <div class="why-us-content" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+                <div class="reveal">
+                    <span class="section-badge">Patient First</span>
+                    <h2 class="section-title">Your Comfort is Our Priority</h2>
+                    <p style="color:var(--gray-500);margin-bottom:28px">At Global 5 Hospital, patient experience is not
+                        an afterthought — it's built into every process, every interaction, and every facility we
+                        design.</p>
+                    <div style="display:flex;flex-direction:column;gap:16px">
+                        <div style="display:flex;gap:12px;align-items:center"><i class="fa-solid fa-check-circle"
+                                style="color:var(--secondary);font-size:1.1rem;flex-shrink:0"></i><span>Private rooms
+                                with nurse call systems and family accommodation</span></div>
+                        <div style="display:flex;gap:12px;align-items:center"><i class="fa-solid fa-check-circle"
+                                style="color:var(--secondary);font-size:1.1rem;flex-shrink:0"></i><span>Multi-cuisine
+                                dietary kitchen with dietician-approved menus</span></div>
+                        <div style="display:flex;gap:12px;align-items:center"><i class="fa-solid fa-check-circle"
+                                style="color:var(--secondary);font-size:1.1rem;flex-shrink:0"></i><span>Free WiFi,
+                                entertainment systems and patient concierge services</span></div>
+                        <div style="display:flex;gap:12px;align-items:center"><i class="fa-solid fa-check-circle"
+                                style="color:var(--secondary);font-size:1.1rem;flex-shrink:0"></i><span>Real-time
+                                surgery tracker and family waiting lounges</span></div>
+                        <div style="display:flex;gap:12px;align-items:center"><i class="fa-solid fa-check-circle"
+                                style="color:var(--secondary);font-size:1.1rem;flex-shrink:0"></i><span>Chaplaincy and
+                                spiritual care available</span></div>
+                    </div>
+                    <div style="margin-top:32px"><a href="packages.html" class="btn btn-primary"><i
+                                class="fa-solid fa-box-open"></i> View Health Packages</a></div>
+                </div>
+                <div class="reveal reveal-delay-1">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+                        <div
+                            style="background:var(--white);border-radius:var(--radius-lg);padding:28px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--gray-100)">
+                            <i class="fa-solid fa-bed"
+                                style="font-size:2rem;color:var(--primary);margin-bottom:12px;display:block"></i>
+                            <div style="font-size:1.8rem;font-weight:800;color:var(--gray-900)">600+</div>
+                            <div style="font-size:0.8rem;color:var(--gray-500)">Hospital Beds</div>
+                        </div>
+                        <div
+                            style="background:var(--white);border-radius:var(--radius-lg);padding:28px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--gray-100)">
+                            <i class="fa-solid fa-operation"
+                                style="font-size:2rem;color:var(--secondary);margin-bottom:12px;display:block"></i>
+                            <div style="font-size:1.8rem;font-weight:800;color:var(--gray-900)">25+</div>
+                            <div style="font-size:0.8rem;color:var(--gray-500)">OT Suites</div>
+                        </div>
+                        <div
+                            style="background:var(--white);border-radius:var(--radius-lg);padding:28px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--gray-100)">
+                            <i class="fa-solid fa-shield-halved"
+                                style="font-size:2rem;color:var(--accent);margin-bottom:12px;display:block"></i>
+                            <div style="font-size:1.8rem;font-weight:800;color:var(--gray-900)">NABH</div>
+                            <div style="font-size:0.8rem;color:var(--gray-500)">Accredited</div>
+                        </div>
+                        <div
+                            style="background:var(--white);border-radius:var(--radius-lg);padding:28px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--gray-100)">
+                            <i class="fa-solid fa-star"
+                                style="font-size:2rem;color:#f59e0b;margin-bottom:12px;display:block"></i>
+                            <div style="font-size:1.8rem;font-weight:800;color:var(--gray-900)">4.8★</div>
+                            <div style="font-size:0.8rem;color:var(--gray-500)">Patient Rating</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="logo">
+                                <div class="logo-icon"><i class="fa-solid fa-hospital"></i></div>
+                                <div>
+                                    <div class="logo-text">Global 5 Hospital</div>
+                                    <div class="logo-sub">Caring for Life</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="footer-desc">Patient-first care with cutting-edge facilities and warm, human service.
+                        </p>
+                        <div class="footer-social"><a href="#" class="social-btn"><i
+                                    class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-btn"><i
+                                    class="fa-brands fa-instagram"></i></a><a href="#" class="social-btn"><i
+                                    class="fa-brands fa-linkedin-in"></i></a></div>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Quick Links</h5>
+                        <div class="footer-links"><a href="../index.html" class="footer-link">Home</a><a
+                                href="about.html" class="footer-link">About Us</a><a href="specialties.html"
+                                class="footer-link">Specialties</a><a href="doctors.html"
+                                class="footer-link">Doctors</a><a href="contact.html" class="footer-link">Contact</a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Services</h5>
+                        <div class="footer-links"><a href="#" class="footer-link">Emergency Care</a><a href="#"
+                                class="footer-link">ICU & Critical Care</a><a href="#"
+                                class="footer-link">Diagnostics</a><a href="#" class="footer-link">Telemedicine</a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Contact</h5>
+                        <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><span>+91-22-4121-5555</span>
+                        </div>
+                        <div class="footer-contact-item"><i
+                                class="fa-solid fa-envelope"></i><span>info@global5hospital.com</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-inner">
+                    <p class="footer-copy">&copy; 2026 Global 5 Hospital. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)this.classList.remove('open')">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-calendar-plus"></i> Book an Appointment</h3>
+                <div class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('open')"><i
+                        class="fa-solid fa-xmark"></i></div>
+            </div>
+            <div class="modal-body">
+                <form
+                    onsubmit="event.preventDefault();this.style.display='none';document.getElementById('apptSuccess').style.display='block'">
+                    <div class="form-row">
+                        <div class="form-group"><label>First Name *</label><input type="text" class="form-control"
+                                required /></div>
+                        <div class="form-group"><label>Last Name *</label><input type="text" class="form-control"
+                                required /></div>
+                    </div>
+                    <div class="form-group"><label>Phone *</label><input type="tel" class="form-control" required />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Specialty *</label><select class="form-control" required>
+                                <option value="">Select...</option>
+                                <option>Cardiology</option>
+                                <option>Neurology</option>
+                                <option>Orthopedics</option>
+                            </select></div>
+                        <div class="form-group"><label>Date *</label><input type="date" class="form-control" required />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary"
+                        style="width:100%;justify-content:center;margin-top:8px"><i class="fa-solid fa-paper-plane"></i>
+                        Submit</button>
+                </form>
+                <div id="apptSuccess" class="success-msg" style="display:none"><i class="fa-solid fa-circle-check"></i>
+                    <h4>Appointment Requested!</h4>
+                    <p>Our team will call you within 30 minutes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

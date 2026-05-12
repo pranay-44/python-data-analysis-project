@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog & Articles – Global 5 Hospital</title>
+    <meta name="description"
+        content="Read the latest health tips, medical insights, and expert advice from the doctors of Global 5 Hospital." />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-left"><span class="top-bar-item"><i class="fa-solid fa-phone"></i> Emergency:
+                    +91-22-4121-5555</span></div>
+        </div>
+    </div>
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-hospital"></i></div>
+                <div>
+                    <div class="logo-text" style="color:var(--gray-900)">Global 5 Hospital</div>
+                    <div class="logo-sub" style="color:var(--gray-500)">Caring for Life</div>
+                </div>
+            </a>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link" style="color:var(--gray-700)">Home</a>
+                <a href="about.html" class="nav-link" style="color:var(--gray-700)">About Us</a>
+                <a href="specialties.html" class="nav-link" style="color:var(--gray-700)">Specialties</a>
+                <a href="doctors.html" class="nav-link" style="color:var(--gray-700)">Doctors</a>
+                <a href="services.html" class="nav-link" style="color:var(--gray-700)">Patient Care</a>
+                <a href="packages.html" class="nav-link" style="color:var(--gray-700)">Packages</a>
+                <a href="blog.html" class="nav-link" style="color:var(--primary);font-weight:700">Blog</a>
+                <a href="contact.html" class="nav-link" style="color:var(--gray-700)">Contact</a>
+            </div>
+            <div class="nav-actions"><button class="btn btn-secondary btn-sm"
+                    onclick="document.getElementById('modalOverlay').classList.add('open')"><i
+                        class="fa-solid fa-calendar-check"></i> Book Appointment</button></div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-hospital"></i></div>
+                <div>
+                    <div class="logo-text" style="color:var(--gray-900)">Global 5 Hospital</div>
+                </div>
+            </div>
+            <div class="mobile-nav-close" id="mobileNavClose"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="../index.html" class="mobile-nav-link"><i class="fa-solid fa-home"></i> Home</a>
+            <a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-hospital-user"></i> About Us</a>
+            <a href="specialties.html" class="mobile-nav-link"><i class="fa-solid fa-stethoscope"></i> Specialties</a>
+            <a href="doctors.html" class="mobile-nav-link"><i class="fa-solid fa-user-doctor"></i> Doctors</a>
+            <a href="services.html" class="mobile-nav-link"><i class="fa-solid fa-hand-holding-heart"></i> Patient
+                Care</a>
+            <a href="packages.html" class="mobile-nav-link"><i class="fa-solid fa-box-open"></i> Packages</a>
+            <a href="blog.html" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> Blog</a>
+            <a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>Health Blog & Articles</h1>
+        <div class="breadcrumb"><a href="../index.html">Home</a><i class="fa-solid fa-angle-right"></i><span>Blog</span>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Category Filter -->
+            <div class="doctor-filters" style="margin-bottom:48px">
+                <button class="filter-btn active" data-cat="all">All</button>
+                <button class="filter-btn" data-cat="Cardiology">Cardiology</button>
+                <button class="filter-btn" data-cat="Neurology">Neurology</button>
+                <button class="filter-btn" data-cat="Orthopedics">Orthopedics</button>
+                <button class="filter-btn" data-cat="Nutrition">Nutrition</button>
+                <button class="filter-btn" data-cat="Technology">Technology</button>
+                <button class="filter-btn" data-cat="Pediatrics">Pediatrics</button>
+                <button class="filter-btn" data-cat="Wellness">Wellness</button>
+            </div>
+
+            <div class="blog-grid" id="blogGrid">
+                <!-- Cardiology -->
+                <div class="blog-card reveal" data-cat="Cardiology">
+                    <div class="blog-img"><img src="../images/hospital-hero.png" alt="Heart Health"
+                            style="object-position:center 30%" /><span class="blog-cat">Cardiology</span></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span><i class="fa-solid fa-calendar"></i> Apr 10, 2026</span><span><i
+                                    class="fa-solid fa-user-doctor"></i> Dr. Mehta</span><span><i
+                                    class="fa-solid fa-clock"></i> 5 min</span></div>
+                        <h4>10 Warning Signs Your Heart Is Telling You to See a Doctor</h4>
+                        <p>Chest discomfort, shortness of breath, unexplained fatigue — learn which symptoms demand
+                            immediate medical attention.</p>
+                        <a href="#" class="blog-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Technology -->
+                <div class="blog-card reveal reveal-delay-1" data-cat="Technology">
+                    <div class="blog-img"><img src="../images/doctors-team.png" alt="Robotic Surgery" /><span
+                            class="blog-cat">Technology</span></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span><i class="fa-solid fa-calendar"></i> Apr 7, 2026</span><span><i
+                                    class="fa-solid fa-user-doctor"></i> Dr. Sharma</span><span><i
+                                    class="fa-solid fa-clock"></i> 6 min</span></div>
+                        <h4>How Robotic Surgery is Transforming Patient Outcomes in 2026</h4>
+                        <p>Minimally invasive robotic procedures now offer shorter recovery times and better precision
+                            for complex operations.</p>
+                        <a href="#" class="blog-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Pediatrics -->
+                <div class="blog-card reveal reveal-delay-2" data-cat="Pediatrics">
+                    <div class="blog-img"><img src="../images/about-hospital.png" alt="Child Health" /><span
+                            class="blog-cat">Pediatrics</span></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span><i class="fa-solid fa-calendar"></i> Apr 4, 2026</span><span><i
+                                    class="fa-solid fa-user-doctor"></i> Dr. Nair</span><span><i
+                                    class="fa-solid fa-clock"></i> 4 min</span></div>
+                        <h4>Childhood Nutrition: Building Immunity for Life</h4>
+                        <p>Essential vitamins, balanced diet and sleep habits that build a healthy immune system in
+                            children from an early age.</p>
+                        <a href="#" class="blog-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Neurology -->
+                <div class="blog-card reveal" data-cat="Neurology">
+                    <div class="blog-img"><img src="../images/hospital-hero.png" alt="Stroke"
+                            style="object-position:center 60%" /><span class="blog-cat">Neurology</span></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span><i class="fa-solid fa-calendar"></i> Apr 1, 2026</span><span><i
+                                    class="fa-solid fa-user-doctor"></i> Dr. Sharma</span><span><i
+                                    class="fa-solid fa-clock"></i> 7 min</span></div>
+                        <h4>Recognizing Stroke: Act FAST and Save a Life</h4>
+                        <p>Every minute matters during a stroke. Learn the FAST acronym and how to respond before
+                            reaching the hospital.</p>
+                        <a href="#" class="blog-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Nutrition -->
+                <div class="blog-card reveal reveal-delay-1" data-cat="Nutrition">
+                    <div class="blog-img"><img src="../images/doctors-team.png" alt="Diet" /><span
+                            class="blog-cat">Nutrition</span></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span><i class="fa-solid fa-calendar"></i> Mar 28, 2026</span><span><i
+                                    class="fa-solid fa-user-doctor"></i> Dr. Ananda</span><span><i
+                                    class="fa-solid fa-clock"></i> 5 min</span></div>
+                        <h4>The Anti-Inflammatory Diet: What to Eat and Avoid</h4>
+                        <p>Chronic inflammation underlies most modern diseases. Here's a complete dietary guide to keep
+                            inflammation in check.</p>
+                        <a href="#" class="blog-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Orthopedics -->
+                <div class="blog-card reveal reveal-delay-2" data-cat="Orthopedics">
+                    <div class="blog-img"><img src="../images/about-hospital.png" alt="Knee Pain" /><span
+                            class="blog-cat">Orthopedics</span></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span><i class="fa-solid fa-calendar"></i> Mar 24, 2026</span><span><i
+                                    class="fa-solid fa-user-doctor"></i> Dr. Nair</span><span><i
+                                    class="fa-solid fa-clock"></i> 6 min</span></div>
+                        <h4>When is it Time for Knee Replacement Surgery?</h4>
+                        <p>Persistent knee pain and limited mobility can severely impact quality of life. Find out if
+                            surgery is the right answer.</p>
+                        <a href="#" class="blog-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Wellness -->
+                <div class="blog-card reveal" data-cat="Wellness">
+                    <div class="blog-img"><img src="../images/hospital-hero.png" alt="Wellness" /><span
+                            class="blog-cat">Wellness</span></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span><i class="fa-solid fa-calendar"></i> Mar 20, 2026</span><span><i
+                                    class="fa-solid fa-user-doctor"></i> Dr. Kapoor</span><span><i
+                                    class="fa-solid fa-clock"></i> 4 min</span></div>
+                        <h4>5 Daily Habits That Add 10 Years to Your Life</h4>
+                        <p>Simple, science-backed lifestyle changes that dramatically reduce your risk of heart disease,
+                            diabetes and cancer.</p>
+                        <a href="#" class="blog-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cardiology 2 -->
+                <div class="blog-card reveal reveal-delay-1" data-cat="Cardiology">
+                    <div class="blog-img"><img src="../images/doctors-team.png" alt="Blood Pressure" /><span
+                            class="blog-cat">Cardiology</span></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span><i class="fa-solid fa-calendar"></i> Mar 15, 2026</span><span><i
+                                    class="fa-solid fa-user-doctor"></i> Dr. Mehta</span><span><i
+                                    class="fa-solid fa-clock"></i> 5 min</span></div>
+                        <h4>Managing High Blood Pressure Without Medication</h4>
+                        <p>Lifestyle modifications that can significantly lower your blood pressure and reduce
+                            dependency on antihypertensives.</p>
+                        <a href="#" class="blog-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Technology 2 -->
+                <div class="blog-card reveal reveal-delay-2" data-cat="Technology">
+                    <div class="blog-img"><img src="../images/about-hospital.png" alt="AI Healthcare" /><span
+                            class="blog-cat">Technology</span></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span><i class="fa-solid fa-calendar"></i> Mar 10, 2026</span><span><i
+                                    class="fa-solid fa-user-doctor"></i> Editorial</span><span><i
+                                    class="fa-solid fa-clock"></i> 8 min</span></div>
+                        <h4>Artificial Intelligence in Radiology: The Future Is Now</h4>
+                        <p>How AI-powered diagnostic imaging is helping radiologists detect cancers and abnormalities
+                            faster and more accurately.</p>
+                        <a href="#" class="blog-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination Placeholder -->
+            <div style="display:flex;justify-content:center;gap:8px;margin-top:48px">
+                <button class="btn btn-primary btn-sm">1</button>
+                <button class="btn btn-outline btn-sm">2</button>
+                <button class="btn btn-outline btn-sm">3</button>
+                <button class="btn btn-outline btn-sm"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section-sm" style="background:var(--primary)">
+        <div class="container text-center">
+            <span class="section-badge" style="background:rgba(255,255,255,0.2);color:white">Stay Updated</span>
+            <h2 class="section-title" style="color:white;margin-bottom:12px">Subscribe to Our Health Newsletter</h2>
+            <p style="color:rgba(255,255,255,0.8);margin-bottom:32px">Get the latest health insights, tips and hospital
+                news delivered to your inbox monthly.</p>
+            <form
+                onsubmit="event.preventDefault();this.innerHTML='<p style=color:white;font-weight:600>✓ You\'re subscribed! Thank you.</p>'"
+                style="display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap">
+                <input type="email" class="form-control" placeholder="your@email.com" required
+                    style="flex:1;background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;min-width:200px" />
+                <button type="submit" class="btn"
+                    style="background:white;color:var(--primary);font-weight:700;padding:12px 28px;border-radius:var(--radius-full)">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="logo">
+                                <div class="logo-icon"><i class="fa-solid fa-hospital"></i></div>
+                                <div>
+                                    <div class="logo-text">Global 5 Hospital</div>
+                                    <div class="logo-sub">Caring for Life</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="footer-desc">Expert medical insights from our team of 350+ specialist doctors.</p>
+                        <div class="footer-social"><a href="#" class="social-btn"><i
+                                    class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-btn"><i
+                                    class="fa-brands fa-instagram"></i></a><a href="#" class="social-btn"><i
+                                    class="fa-brands fa-linkedin-in"></i></a></div>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Quick Links</h5>
+                        <div class="footer-links"><a href="../index.html" class="footer-link">Home</a><a
+                                href="about.html" class="footer-link">About Us</a><a href="specialties.html"
+                                class="footer-link">Specialties</a><a href="doctors.html"
+                                class="footer-link">Doctors</a><a href="contact.html" class="footer-link">Contact</a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Categories</h5>
+                        <div class="footer-links"><a href="#" class="footer-link">Cardiology</a><a href="#"
+                                class="footer-link">Neurology</a><a href="#" class="footer-link">Pediatrics</a><a
+                                href="#" class="footer-link">Nutrition</a><a href="#" class="footer-link">Wellness</a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Contact</h5>
+                        <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><span>+91-22-4121-5555</span>
+                        </div>
+                        <div class="footer-contact-item"><i
+                                class="fa-solid fa-envelope"></i><span>info@global5hospital.com</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-inner">
+                    <p class="footer-copy">&copy; 2026 Global 5 Hospital. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)this.classList.remove('open')">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-calendar-plus"></i> Book an Appointment</h3>
+                <div class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('open')"><i
+                        class="fa-solid fa-xmark"></i></div>
+            </div>
+            <div class="modal-body">
+                <form
+                    onsubmit="event.preventDefault();this.style.display='none';document.getElementById('apptSuccess').style.display='block'">
+                    <div class="form-row">
+                        <div class="form-group"><label>First Name *</label><input type="text" class="form-control"
+                                required /></div>
+                        <div class="form-group"><label>Last Name *</label><input type="text" class="form-control"
+                                required /></div>
+                    </div>
+                    <div class="form-group"><label>Phone *</label><input type="tel" class="form-control" required />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Specialty *</label><select class="form-control" required>
+                                <option value="">Select...</option>
+                                <option>Cardiology</option>
+                                <option>Neurology</option>
+                                <option>Orthopedics</option>
+                            </select></div>
+                        <div class="form-group"><label>Date *</label><input type="date" class="form-control" required />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary"
+                        style="width:100%;justify-content:center;margin-top:8px"><i class="fa-solid fa-paper-plane"></i>
+                        Submit</button>
+                </form>
+                <div id="apptSuccess" class="success-msg" style="display:none"><i class="fa-solid fa-circle-check"></i>
+                    <h4>Appointment Requested!</h4>
+                    <p>Our team will call you within 30 minutes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Blog category filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const cat = btn.dataset.cat;
+                document.querySelectorAll('.blog-card').forEach(card => {
+                    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+                });
+            });
+        });
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
