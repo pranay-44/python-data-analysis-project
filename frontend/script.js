@@ -27,16 +27,16 @@ const flags = {
 async function fetchMatchData(matchId) {
     try {
         if (!globalMatches || !globalDeliveries || !globalBatting || !globalBowling) {
-            const matchesRes = await fetch('../data/processed/matches.json');
+            const matchesRes = await fetch('/api/matches');
             globalMatches = await matchesRes.json();
             
-            const deliveriesRes = await fetch('../data/processed/deliveries.json');
+            const deliveriesRes = await fetch('/api/deliveries');
             globalDeliveries = await deliveriesRes.json();
 
-            const battingRes = await fetch('../data/processed/batting.json');
+            const battingRes = await fetch('/api/batting');
             globalBatting = await battingRes.json();
 
-            const bowlingRes = await fetch('../data/processed/bowling.json');
+            const bowlingRes = await fetch('/api/bowling');
             globalBowling = await bowlingRes.json();
         }
 
