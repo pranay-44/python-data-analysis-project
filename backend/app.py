@@ -2,32 +2,32 @@ from flask import Flask, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 import pathlib
 import json
+import os
+
+# Resolve paths relative to this file (backend/app.py)
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
+FRONTEND_DIR = str(BASE_DIR / "frontend")
+DATA_DIR = BASE_DIR / "data" / "processed"
 
 app = Flask(
     __name__,
-    static_folder="../frontend",   # serve static assets
-    template_folder="../frontend"   # serve HTML templates
+    static_folder=FRONTEND_DIR,
+    static_url_path="",              # serve static files from root URL
+    template_folder=FRONTEND_DIR
 )
 
-# Enable CORS for development (optional)
+# Enable CORS for development
 CORS(app)
 
-DATA_ROOT = pathlib.Path("../data/processed")
-
 def load_json(name: str):
-    path = DATA_ROOT / f"{name}.json"
+    path = DATA_DIR / f"{name}.json"
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 # ---------- UI routes ----------
 @app.route("/")
 def dashboard():
-    # Render the main dashboard page
     return render_template("cricverse-complete.html")
-
-@app.route("/match-analysis")
-def match_analysis():
-    return render_template("match-analysis.html")
 
 # ---------- API endpoints ----------
 @app.get("/api/matches")
@@ -45,11 +45,6 @@ def api_batting():
 @app.get("/api/bowling")
 def api_bowling():
     return jsonify(load_json("bowling"))
-
-# ---------- Catch‑all static files (if needed) ----------
-@app.route("/frontend/<path:filename>")
-def static_files(filename):
-    return send_from_directory(app.static_folder, filename)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

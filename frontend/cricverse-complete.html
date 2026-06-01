@@ -361,7 +361,7 @@
       <div class="sidebar-section">
         <div class="sidebar-label">Main</div>
         <div class="sidebar-item active" id="navDashboard" onclick="goToDashboard()"><span class="sidebar-icon">⬡</span>Dashboard</div>
-        <div class="sidebar-item" id="navMatchAnalysis" onclick="window.location.href='match-analysis.html'"><span class="sidebar-icon">◈</span>Match Analysis</div>
+        <div class="sidebar-item" id="navMatchAnalysis" onclick="goToMatchAnalysis()"><span class="sidebar-icon">◈</span>Match Analysis</div>
       </div>
 
     </nav>
@@ -511,6 +511,25 @@
 
   </div><!-- /app -->
 </div><!-- /view-dashboard -->
+
+<!-- ═══ VIEW: MATCH ANALYSIS ══════════════════════════════════════ -->
+<div class="view hidden" id="view-match-analysis">
+  <div class="app">
+    <!-- SIDEBAR (duplicate for consistent navigation) -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Main</div>
+        <div class="sidebar-item" onclick="goToDashboard()"><span class="sidebar-icon">⬡</span>Dashboard</div>
+        <div class="sidebar-item active"><span class="sidebar-icon">◈</span>Match Analysis</div>
+      </div>
+    </nav>
+    <!-- MAIN CONTENT -->
+    <div class="main" style="padding:20px;overflow-y:auto">
+      <h2 style="font-family:'Barlow Condensed',sans-serif;color:var(--lime);margin:0 0 20px;font-size:28px;letter-spacing:1px">MATCH ANALYSIS — INDIA IN ODI WORLD CUPS</h2>
+      <div id="analysis-grids-container" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px"></div>
+    </div>
+  </div>
+</div><!-- /view-match-analysis -->
 
 
 <script>

@@ -65,6 +65,71 @@ window.initDashboard = function() {
     fetchMatchData(matchId);
 };
 
+// ─── Match Analysis Navigation ───
+function selectMatch(matchId) {
+    fetchMatchData(matchId);
+    goToDashboard();
+}
+
+function goToMatchAnalysis() {
+    document.getElementById('view-landing').classList.add('hidden');
+    document.getElementById('view-dashboard').classList.add('hidden');
+    const ma = document.getElementById('view-match-analysis');
+    ma.classList.remove('hidden');
+    document.body.classList.add('dashboard-mode');
+    renderMatchAnalysisGrids();
+}
+
+function renderMatchAnalysisGrids() {
+    const container = document.getElementById('analysis-grids-container');
+    if (!container) return;
+
+    // If data hasn't loaded yet, fetch it first
+    if (!globalMatches) {
+        fetch('/api/matches')
+            .then(r => r.json())
+            .then(data => {
+                globalMatches = data;
+                renderMatchAnalysisGrids(); // retry after loading
+            });
+        return;
+    }
+
+    const years = ['2003', '2007', '2011', '2015', '2019', '2023'];
+    container.innerHTML = '';
+
+    years.forEach(year => {
+        const matchesForYear = globalMatches.filter(m => m.year == year && (m.team1 === 'India' || m.team2 === 'India'));
+
+        const gridDiv = document.createElement('div');
+        gridDiv.style.cssText = 'background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;';
+
+        let inner = `<h3 style="margin-top:0;color:var(--lime);font-family:'Barlow Condensed',sans-serif;font-size:22px;margin-bottom:16px">${year} ODI World Cup</h3>`;
+        inner += `<div style="display:flex;flex-direction:column;gap:10px">`;
+
+        if (matchesForYear.length > 0) {
+            matchesForYear.forEach(m => {
+                const opponent = m.team1 === 'India' ? m.team2 : m.team1;
+                const oppFlag = flags[opponent] || '🏳️';
+                inner += `
+                    <div onclick="selectMatch('${m.match_id}')" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:background 0.2s,transform 0.15s" onmouseover="this.style.background='rgba(204,255,0,0.06)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='var(--surface2)';this.style.transform='none'">
+                        <div style="display:flex;align-items:center;gap:12px">
+                            <span style="font-size:20px">🇮🇳 vs ${oppFlag}</span>
+                            <span style="font-weight:600;color:var(--text)">India vs ${opponent}</span>
+                        </div>
+                        <div style="font-size:12px;color:var(--text-muted)">${m.date}</div>
+                    </div>
+                `;
+            });
+        } else {
+            inner += `<div style="color:var(--text-muted);font-size:14px">No matches found.</div>`;
+        }
+
+        inner += `</div>`;
+        gridDiv.innerHTML = inner;
+        container.appendChild(gridDiv);
+    });
+}
 
 
 function populateDashboard(meta, deliveries) {
