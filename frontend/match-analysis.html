@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CricVerse — Match Analysis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lime: #CCFF00;
+      --bg: #080909;
+      --surface: #0f1010;
+      --surface2: #141515;
+      --border: rgba(255,255,255,0.07);
+      --text: #f0f0f0;
+      --text-muted: rgba(240,240,240,0.45);
+    }
+    body {margin:0;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);}
+    .topbar{display:flex;align-items:center;padding:12px 20px;background:rgba(8,9,9,0.95);border-bottom:1px solid var(--border);}
+    .logo{font-size:20px;color:var(--lime);cursor:pointer;}
+    .back-btn{margin-left:auto;background:none;border:none;color:var(--text);cursor:pointer;}
+    .grid-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;padding:20px;}
+    .grid{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px;}
+    .grid h3{margin:0 0 8px;font-size:18px;color:var(--lime);}
+    .match-item{display:flex;justify-content:space-between;padding:8px;background:var(--surface);border-radius:4px;margin-bottom:6px;cursor:pointer;transition:background 0.2s;}
+    .match-item:hover{background:var(--surface2);}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo" onclick="window.location.href='cricverse-complete.html'">CricVerse</div>
+    <button class="back-btn" onclick="window.location.href='cricverse-complete.html'">← Dashboard</button>
+  </div>
+  <div class="grid-container" id="analysis-grids-container">
+    <!-- Grids will be injected here -->
+  </div>
+  <script>
+    async function loadMatches() {
+      const res = await fetch('../data/processed/matches.json');
+      const matches = await res.json();
+      const years = ['2003','2007','2011','2015','2019','2023'];
+      const container = document.getElementById('analysis-grids-container');
+      years.forEach(year => {
+        const yearMatches = matches.filter(m => m.year===year && (m.team1==='India' || m.team2==='India'));
+        const grid = document.createElement('div');
+        grid.className='grid';
+        grid.innerHTML = `<h3>${year} ODI World Cup</h3>`;
+        if(yearMatches.length===0){
+          grid.innerHTML += `<div style='color:var(--text-muted)'>No matches found.</div>`;
+        } else {
+          yearMatches.forEach(m => {
+            const opponent = m.team1==='India'?m.team2:m.team1;
+            const flag = opponent==="Australia"?"🇦🇺": opponent==="England"?"🏴": "🏳️"; // simple flag fallback
+            const div = document.createElement('div');
+            div.className='match-item';
+            div.innerHTML = `<span>🇮🇳 vs ${flag}</span><span>${m.date}</span>`;
+            div.onclick = () => {
+              // Navigate to dashboard with match id
+              window.location.href = `cricverse-complete.html?match=${m.match_id}`;
+            };
+            grid.appendChild(div);
+          });
+        }
+        container.appendChild(grid);
+      });
+    }
+    loadMatches();
+  </script>
+</body>
+</html>
