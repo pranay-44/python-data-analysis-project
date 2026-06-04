@@ -31,55 +31,25 @@ python-data-analysis-project/
 You'll need Python 3.8+ installed.
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/pranay-44/python-data-analysis-project.git
-cd python-data-analysis-project
-
-# 2. Set up a virtual environment
-python -m venv venv
-
-# On Windows:
-venv\Scripts\activate
-
-# On Mac/Linux:
-source venv/bin/activate
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Run the Flask server
-python backend/app.py
+# Initialise a repo (if not done yet)
+git init
+# Add all project files (excluding venv and .gitignore)
+git add .
+# First commit
+git commit -m "Initial commit – pastel UI, SPA ready"
+# Add remote origin (replace the placeholder URL)
+git remote add origin <YOUR_GITHUB_REPO_URL>
+# Rename default branch to main (optional but recommended)
+git branch -M main
+# Push to GitHub
+git push -u origin main
 ```
 
-Then open `http://127.0.0.1:5000` in your browser. That's it.
+## 🤝 Contributing
+Feel free to open issues or submit pull requests. Follow the existing code style and keep the UI consistent with the pastel colour scheme.
 
-> **Note:** If the dashboard shows no data, run `python etl.py` first to generate the processed JSON files inside `data/processed/`.
-
----
-
-## Tech used
-- **Python / Flask** — backend API
-- **HTML + CSS + JavaScript** — frontend (no frameworks, just vanilla)
-- **Pandas** — data processing in `etl.py`
-- **Jupyter Notebook** — initial exploration before building the app
+## 📄 License
+This project is licensed under the **MIT License** – see the `LICENSE` file for details.
 
 ---
-
-## Known issues / things I'd improve
-- The frontend is a single large HTML file — could be split into components
-- No authentication; meant for local use only
-- Deployment setup is manual (see below)
----
-## Deploying (optional)
-If you want to host this somewhere:
-```bash
-pip install gunicorn       # Linux/Mac
-gunicorn -w 4 -b 0.0.0.0:8000 backend.app:app
-
-# Windows alternative
-pip install waitress
-waitress-serve --port=8000 backend.app:app
-```
-Point a reverse proxy (like NGINX) at that port if you're exposing it publicly.
-
 *Happy coding and enjoy the clean, pastel‑themed cricket analytics dashboard!*
