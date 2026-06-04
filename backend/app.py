@@ -26,6 +26,7 @@ def load_json(name: str):
 
 # ---------- UI routes ----------
 @app.route("/")
+@app.route("/cricverse-complete.html")
 def dashboard():
     return render_template("cricverse-complete.html")
 

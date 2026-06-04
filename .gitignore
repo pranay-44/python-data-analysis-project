@@ -1,0 +1,27 @@
+# Python / Flask
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment / Config files
+.env
+*.env
+
+# IDE / Editor files
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+
+# Data files (keep processed data but ignore raw if any)
+data/raw/
+
+# Build / Distribution
+build/
+dist/
+*.egg-info/

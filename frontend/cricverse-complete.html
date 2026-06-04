@@ -8,31 +8,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   :root {
-    --lime: #CCFF00;
-    --lime-dim: rgba(204,255,0,0.15);
-    --lime-glow: rgba(204,255,0,0.3);
-    --bg: #080909;
-    --surface: #0f1010;
-    --surface2: #141515;
-    --surface3: #1a1b1b;
-    --border: rgba(255,255,255,0.07);
-    --border-lime: rgba(204,255,0,0.25);
-    --text: #f0f0f0;
-    --text-muted: rgba(240,240,240,0.45);
-    --text-dim: rgba(240,240,240,0.25);
-    --red: #FF4444;
-    --orange: #FF8C00;
-    --blue: #3BA3FF;
-    --green: #00E676;
+    --lime: #A8C840;
+    --lime-dim: rgba(168,200,64,0.12);
+    --lime-glow: rgba(168,200,64,0.2);
+    --bg: #12141A;
+    --surface: #1A1D26;
+    --surface2: #1F2330;
+    --surface3: #252A38;
+    --border: rgba(255,255,255,0.08);
+    --border-lime: rgba(168,200,64,0.3);
+    --text: #E8EAF0;
+    --text-muted: rgba(220,224,235,0.5);
+    --text-dim: rgba(220,224,235,0.28);
+    --red: #C0504A;
+    --orange: #C07830;
+    --blue: #4A82B8;
+    --green: #3A9E68;
     --sidebar-w: 220px;
     --topbar-h: 56px;
-    --ticker-h: 30px;
+    --ticker-h: 0px;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:14px}
 
   /* ─── TICKER ─────────────────────────────────────────── */
-  .ticker{height:var(--ticker-h);background:#0d0d0d;border-bottom:1px solid var(--border);display:flex;align-items:center;overflow:hidden;position:fixed;top:0;left:0;right:0;z-index:200}
+  .ticker{height:var(--ticker-h);background:var(--surface);border-bottom:var(--border);display:flex;align-items:center;overflow:hidden;position:fixed;top:0;left:0;right:0;z-index:200}
   .ticker-label{flex-shrink:0;padding:0 12px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--bg);background:var(--lime);height:100%;display:flex;align-items:center}
   .ticker-track{display:flex;align-items:center;animation:tickerScroll 35s linear infinite;white-space:nowrap}
   .ticker-item{padding:0 20px;font-size:11px;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;display:flex;align-items:center;gap:6px;border-right:1px solid var(--border)}
@@ -59,7 +59,7 @@
   .icon-btn{width:34px;height:34px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:all 0.2s;font-size:16px}
   .icon-btn:hover{border-color:var(--border-lime);color:var(--lime)}
   .notif-dot{position:relative}.notif-dot::after{content:'';position:absolute;top:4px;right:4px;width:6px;height:6px;border-radius:50%;background:var(--red);border:1px solid var(--bg)}
-  .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--lime),#88bb00);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#000;cursor:pointer;font-family:'Barlow Condensed',sans-serif}
+  .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--lime),#6e8a28);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;cursor:pointer;font-family:'Barlow Condensed',sans-serif}
 
   /* Back button — only visible in dashboard mode */
   .back-btn{display:none;align-items:center;gap:7px;padding:6px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--text-muted);cursor:pointer;text-transform:uppercase;transition:all 0.2s;flex-shrink:0}
@@ -93,8 +93,8 @@
   .hero-subtext{font-family:'Barlow',sans-serif;font-size:15px;font-weight:400;color:rgba(240,240,240,0.55);line-height:1.7;margin-bottom:38px}
 
   .hero-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  .cta-primary{padding:13px 28px;background:var(--lime);color:#000;border:none;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.15s}
-  .cta-primary:hover{background:#d4ff00;transform:translateY(-1px)}
+  .cta-primary{padding:13px 28px;background:var(--lime);color:#fff;border:none;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.15s}
+  .cta-primary:hover{background:#94b034;transform:translateY(-1px)}
   .cta-secondary{padding:12px 24px;background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.25);border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s,transform 0.15s}
   .cta-secondary:hover{border-color:rgba(255,255,255,0.55);color:#fff;transform:translateY(-1px)}
 
@@ -141,7 +141,7 @@
 
   /* ─── HERO MATCH CARD ─────────────────────────────────── */
   .hero-card{background:var(--surface);border:1px solid var(--border-lime);border-radius:12px;overflow:hidden;position:relative;margin-bottom:12px}
-  .hero-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:200px;background:radial-gradient(circle,rgba(204,255,0,0.08) 0%,transparent 70%);pointer-events:none}
+  .hero-glow{display:none}
   .hero-top{padding:14px 20px 10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
   .live-dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1s infinite;flex-shrink:0}
   .hero-meta{font-size:11px;color:var(--text-muted);letter-spacing:0.5px}
@@ -190,7 +190,7 @@
 
   /* ─── AI PANEL ────────────────────────────────────────── */
   .ai-panel{background:var(--surface);border:1px solid var(--border-lime);border-radius:10px;padding:14px;position:relative;overflow:hidden}
-  .ai-glow-bg{position:absolute;top:-30px;right:-30px;width:150px;height:150px;background:radial-gradient(circle,rgba(204,255,0,0.06),transparent 70%);pointer-events:none}
+  .ai-glow-bg{display:none}
   .ai-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;background:var(--lime-dim);border:1px solid var(--border-lime);border-radius:4px;font-size:10px;font-weight:700;color:var(--lime);letter-spacing:1.5px;font-family:'Barlow Condensed',sans-serif;margin-bottom:10px}
   .ai-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite}
   .pred-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
@@ -287,25 +287,7 @@
 </head>
 <body>
 
-<!-- ═══ TICKER ══════════════════════════════════════════════ -->
-<div class="ticker">
-  <div class="ticker-label">LIVE</div>
-  <div style="overflow:hidden;flex:1;display:flex">
-    <div class="ticker-track">
-      <div class="ticker-item"><span class="ticker-live"></span><span class="ticker-score">IND 287/4</span><span class="ticker-vs">vs</span><span class="ticker-score">AUS</span><span class="ticker-status">LIVE · 42.3</span></div>
-      <div class="ticker-item"><span class="ticker-score">ENG 176/8</span><span class="ticker-vs">vs</span><span class="ticker-score">PAK 178/3</span><span class="ticker-status">STUMPS · T20</span><span style="font-size:10px;color:var(--text-muted);margin-left:4px">PAK won by 7 wkts</span></div>
-      <div class="ticker-item"><span class="ticker-score">SA 412</span><span class="ticker-vs">vs</span><span class="ticker-score">NZ 356/8</span><span class="ticker-status">DAY 4 · TEST</span><span style="font-size:10px;color:var(--text-muted);margin-left:4px">NZ trail by 56</span></div>
-      <div class="ticker-item"><span class="ticker-live"></span><span class="ticker-score">WI 201/9</span><span class="ticker-vs">vs</span><span class="ticker-score">BAN</span><span class="ticker-status">LIVE · 38.2</span><span style="font-size:10px;color:var(--text-muted);margin-left:4px">W9 lost (4 wkts)</span></div>
-      <div class="ticker-item"><span class="ticker-score">SL 198/6</span><span class="ticker-vs">vs</span><span class="ticker-score">AFG 142</span><span class="ticker-status">SL WON BY 56R</span></div>
-      <div class="ticker-item"><span class="ticker-live"></span><span class="ticker-score">IND 287/4</span><span class="ticker-vs">vs</span><span class="ticker-score">AUS</span><span class="ticker-status">LIVE · 42.3</span></div>
-      <div class="ticker-item"><span class="ticker-score">ENG 176/8</span><span class="ticker-vs">vs</span><span class="ticker-score">PAK 178/3</span><span class="ticker-status">STUMPS · T20</span><span style="font-size:10px;color:var(--text-muted);margin-left:4px">PAK won by 7 wkts</span></div>
-      <div class="ticker-item"><span class="ticker-score">SA 412</span><span class="ticker-vs">vs</span><span class="ticker-score">NZ 356/8</span><span class="ticker-status">DAY 4 · TEST</span><span style="font-size:10px;color:var(--text-muted);margin-left:4px">NZ trail by 56</span></div>
-      <div class="ticker-item"><span class="ticker-live"></span><span class="ticker-score">WI 201/9</span><span class="ticker-vs">vs</span><span class="ticker-score">BAN</span><span class="ticker-status">LIVE · 38.2</span></div>
-      <div class="ticker-item"><span class="ticker-score">SL 198/6</span><span class="ticker-vs">vs</span><span class="ticker-score">AFG 142</span><span class="ticker-status">SL WON BY 56R</span></div>
-    </div>
-  </div>
-</div>
-
+<!-- ═══ TICKER REMOVED ══════════════════════════════════════════════ -->
 <!-- ═══ TOPBAR ═══════════════════════════════════════════════ -->
 <div class="topbar">
   <div class="logo" id="logoBtn">
@@ -409,13 +391,7 @@
             <div class="team-overs" style="text-align:right" id="hero-team2-overs">50.0 overs · RR: 4.82</div>
           </div>
         </div>
-        <div class="hero-bar-wrap">
-          <div class="win-prob-row">
-            <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:var(--lime)"></div><span class="win-prob-label">India Win Probability</span></div>
-            <div style="display:flex;align-items:center;gap:12px"><span class="win-prob-pct ind">73%</span><span class="win-prob-pct aus">27%</span></div>
-          </div>
-          <div class="prob-bar"><div class="prob-fill-ind" style="width:73%"></div><div class="prob-fill-aus" style="width:27%"></div></div>
-        </div>
+        <!-- Win probability bar removed -->
         <div class="hero-footer">
           <div class="hero-stat"><div class="hero-stat-val" style="color:var(--lime)" id="hero-p1-val">KL Rahul</div><div class="hero-stat-lbl" id="hero-p1-lbl">Batting · 87★(91)</div></div>
           <div class="hero-stat"><div class="hero-stat-val" style="color:var(--lime)" id="hero-p2-val">Rohit Sharma</div><div class="hero-stat-lbl" id="hero-p2-lbl">Batting · 112(102)</div></div>
@@ -425,23 +401,22 @@
       </div>
 
       <!-- STAT CARDS ROW 1 -->
-      <div class="grid4" style="margin-bottom:12px">
-        <div class="stat-card lime"><div class="stat-lbl">Total Runs</div><div class="stat-val">287</div><div class="stat-trend"><span class="trend-up">↑ +6.75</span><span class="trend-lbl">RR this innings</span></div><div class="mini-chart" id="runsChart"></div></div>
-        <div class="stat-card blue"><div class="stat-lbl">Predicted Final</div><div class="stat-val">334</div><div class="stat-trend"><span class="trend-up">↑ 93%</span><span class="trend-lbl">AI confidence</span></div><div class="mini-chart" id="predChart"></div></div>
-        <div class="stat-card orange"><div class="stat-lbl">Boundary %</div><div class="stat-val">38<span style="font-size:16px;font-weight:500;color:var(--text-muted)">%</span></div><div class="stat-trend"><span class="trend-up">↑ 4s: 29</span><span class="trend-lbl">&nbsp;6s: 8</span></div><div class="mini-chart" id="bdryChart"></div></div>
-        <div class="stat-card green"><div class="stat-lbl">Momentum</div><div class="stat-val">8.2</div><div class="stat-trend"><span class="trend-up">↑ HIGH</span><span class="trend-lbl">Pressure: Med</span></div><div class="mini-chart" id="momChart"></div></div>
+      <div class="grid3" style="margin-bottom:12px">
+        <div class="stat-card lime"><div class="stat-lbl">Total Runs</div><div class="stat-val" id="stat-total-runs">287</div><div class="stat-trend" id="stat-total-trend"><span class="trend-up">↑ +6.75</span><span class="trend-lbl">RR this innings</span></div><div class="mini-chart" id="runsChart"></div></div>
+        <div class="stat-card orange"><div class="stat-lbl">Boundary %</div><div class="stat-val" id="stat-bdry-pct">38<span style="font-size:16px;font-weight:500;color:var(--text-muted)">%</span></div><div class="stat-trend" id="stat-bdry-trend"><span class="trend-up">↑ 4s: 29</span><span class="trend-lbl">&nbsp;6s: 8</span></div><div class="mini-chart" id="bdryChart"></div></div>
+        <div class="stat-card green"><div class="stat-lbl">Momentum</div><div class="stat-val" id="stat-momentum">8.2</div><div class="stat-trend"><span class="trend-up">↑ HIGH</span><span class="trend-lbl">Pressure: Med</span></div><div class="mini-chart" id="momChart"></div></div>
       </div>
 
       <!-- STAT CARDS ROW 2 -->
       <div class="grid4" style="margin-bottom:14px">
-        <div class="stat-card"><div class="stat-lbl">Dot Ball %</div><div class="stat-val">24<span style="font-size:16px;color:var(--text-muted)">%</span></div><div class="stat-trend"><span class="trend-dn">↓ Low pressure</span></div></div>
-        <div class="stat-card"><div class="stat-lbl">Partnership</div><div class="stat-val">127</div><div class="stat-trend"><span class="trend-up">↑ 3rd wkt</span><span class="trend-lbl">ongoing</span></div></div>
-        <div class="stat-card red"><div class="stat-lbl">Wickets Left</div><div class="stat-val">6</div><div class="stat-trend"><span class="trend-lbl">4 wickets fallen</span></div></div>
-        <div class="stat-card"><div class="stat-lbl">CRR / RRR</div><div class="stat-val" style="font-size:20px">6.75<span style="color:var(--text-muted);font-size:14px">/8.53</span></div><div class="stat-trend"><span class="trend-dn">Gap widening</span></div></div>
+        <div class="stat-card"><div class="stat-lbl">Dot Ball %</div><div class="stat-val" id="stat-dot-pct">24<span style="font-size:16px;color:var(--text-muted)">%</span></div><div class="stat-trend"><span class="trend-dn">↓ Low pressure</span></div></div>
+        <div class="stat-card"><div class="stat-lbl">Highest P'ship</div><div class="stat-val" id="stat-partnership">127</div><div class="stat-trend"><span class="trend-up">↑ Best in Match</span><span class="trend-lbl"></span></div></div>
+        <div class="stat-card red"><div class="stat-lbl">Wickets Fallen</div><div class="stat-val" id="stat-wickets">4</div><div class="stat-trend" id="stat-wickets-trend"><span class="trend-lbl">Total Wickets</span></div></div>
+        <div class="stat-card"><div class="stat-lbl">Current Run Rate</div><div class="stat-val" style="font-size:20px" id="stat-crr">6.75</div><div class="stat-trend"><span class="trend-dn">Match Pace</span></div></div>
       </div>
 
       <!-- CHARTS ROW -->
-      <div class="grid-7-5" style="margin-bottom:12px">
+      <div style="margin-bottom:12px">
         <div class="card">
           <div class="card-header">
             <div class="card-title">Worm Graph &amp; Run Rate Progression</div>
@@ -452,12 +427,6 @@
             </div>
           </div>
           <div class="chart-wrap" style="height:200px"><canvas id="mainChart"></canvas></div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Shot Heatmap</div><div class="card-action">All Zones</div></div>
-          <div style="position:relative;width:100%;padding-bottom:100%;max-height:200px">
-            <canvas id="wagonWheel" style="position:absolute;top:0;left:50%;transform:translateX(-50%);max-width:200px;max-height:200px"></canvas>
-          </div>
         </div>
       </div>
 
@@ -501,11 +470,6 @@
           <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--text-muted)">Field Placements</span><span style="color:var(--blue);font-weight:600;font-family:'Barlow Condensed',sans-serif">DEFENSIVE</span></div>
         </div>
       </div>
-      <div class="section-title" style="margin-top:14px">Recent Alerts</div>
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <div style="display:flex;align-items:flex-start;gap:7px;font-size:11px"><span style="color:var(--lime);flex-shrink:0;margin-top:1px">⚡</span><span style="color:var(--text-muted)"><strong style="color:var(--text)">DRS Review</strong> — Ball-tracking shows Kohli LBW appeal umpire's call. Tight!</span></div>
-        <div style="display:flex;align-items:flex-start;gap:7px;font-size:11px"><span style="color:var(--orange);flex-shrink:0;margin-top:1px">⚡</span><span style="color:var(--text-muted)"><strong style="color:var(--text)">Injury Watch</strong> — Starc bowling with strapped left ankle. Monitoring pace drop.</span></div>
-        <div style="display:flex;align-items:flex-start;gap:7px;font-size:11px"><span style="color:var(--blue);flex-shrink:0;margin-top:1px">⚡</span><span style="color:var(--text-muted)"><strong style="color:var(--text)">Wind factor</strong> — Prevailing breeze aids straight-drive boundaries. Worth noting.</span></div>
       </div>
     </div><!-- /right -->
 
@@ -681,24 +645,6 @@ function initDashboard() {
       scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'rgba(240,240,240,0.35)',font:{size:10},maxTicksLimit:8}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'rgba(240,240,240,0.35)',font:{size:10}},min:132,max:148}}}
   });
 
-  // Wagon wheel
-  const ww=document.getElementById('wagonWheel'); const wwCtx=ww.getContext('2d');
-  ww.width=200; ww.height=200;
-  const cx=100,cy=100,r=85;
-  wwCtx.strokeStyle='rgba(255,255,255,0.06)'; wwCtx.lineWidth=1;
-  [0.3,0.5,0.7,1].forEach(f=>{wwCtx.beginPath();wwCtx.arc(cx,cy,r*f,0,Math.PI*2);wwCtx.stroke();});
-  for(let i=0;i<12;i++){const a=(i*30)*Math.PI/180;wwCtx.beginPath();wwCtx.moveTo(cx,cy);wwCtx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));wwCtx.stroke();}
-  const shots=[{angle:-40,dist:0.9,type:'six'},{angle:20,dist:0.85,type:'four'},{angle:80,dist:0.75,type:'four'},{angle:120,dist:0.9,type:'six'},{angle:160,dist:0.7,type:'four'},{angle:200,dist:0.8,type:'four'},{angle:240,dist:0.9,type:'six'},{angle:280,dist:0.65,type:'two'},{angle:320,dist:0.55,type:'one'},{angle:350,dist:0.6,type:'one'},{angle:50,dist:0.4,type:'dot'},{angle:140,dist:0.45,type:'two'},{angle:-20,dist:0.5,type:'one'}];
-  shots.forEach(s=>{
-    const rad=s.angle*Math.PI/180;
-    const x=cx+r*s.dist*Math.cos(rad),y=cy+r*s.dist*Math.sin(rad);
-    wwCtx.beginPath();wwCtx.moveTo(cx,cy);wwCtx.lineTo(x,y);
-    const color=s.type==='six'?'rgba(204,255,0,0.7)':s.type==='four'?'rgba(59,163,255,0.7)':s.type==='dot'?'rgba(255,68,68,0.4)':'rgba(255,255,255,0.25)';
-    wwCtx.strokeStyle=color;wwCtx.lineWidth=s.type==='six'?2.5:s.type==='four'?2:1;wwCtx.stroke();
-    wwCtx.beginPath();wwCtx.arc(x,y,4,0,Math.PI*2);wwCtx.fillStyle=color;wwCtx.fill();
-  });
-  wwCtx.beginPath();wwCtx.arc(cx,cy,8,0,Math.PI*2);wwCtx.fillStyle='rgba(255,255,255,0.9)';wwCtx.fill();
-  wwCtx.beginPath();wwCtx.arc(cx,cy,4,0,Math.PI*2);wwCtx.fillStyle='#080909';wwCtx.fill();
 
   // Live score ticker
   let baseScore=287;

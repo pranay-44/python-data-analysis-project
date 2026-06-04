@@ -75,7 +75,7 @@ function goToMatchAnalysis() {
     document.getElementById('view-landing').classList.add('hidden');
     document.getElementById('view-dashboard').classList.add('hidden');
     const ma = document.getElementById('view-match-analysis');
-    ma.classList.remove('hidden');
+    if (ma) ma.classList.remove('hidden');
     document.body.classList.add('dashboard-mode');
     renderMatchAnalysisGrids();
 }
@@ -173,6 +173,8 @@ function populateDashboard(meta, deliveries) {
         let dotBalls = 0;
         let wickets = 0;
         let maxOver = 0;
+        let highestPartnership = 0;
+        let currentPartnership = 0;
         
         for (let d of teamDeliveries) {
             if (d.over > currentOver) {
@@ -182,14 +184,20 @@ function populateDashboard(meta, deliveries) {
                 }
             }
             total += d.runs_bat + d.extras;
+            currentPartnership += d.runs_bat + d.extras;
             if (d.runs_bat === 4) fours++;
             if (d.runs_bat === 6) sixes++;
             if (d.runs_bat === 0 && d.extras === 0 && !d.is_wicket) dotBalls++;
-            if (d.is_wicket) wickets++;
+            if (d.is_wicket) {
+                wickets++;
+                highestPartnership = Math.max(highestPartnership, currentPartnership);
+                currentPartnership = 0;
+            }
             maxOver = Math.max(maxOver, d.over);
         }
+        highestPartnership = Math.max(highestPartnership, currentPartnership);
         cumulative.push(total);
-        return { cumulative, total, fours, sixes, dotBalls, wickets, ballsFaced: teamDeliveries.length, overs: maxOver };
+        return { cumulative, total, fours, sixes, dotBalls, wickets, ballsFaced: teamDeliveries.length, overs: maxOver, highestPartnership };
     }
 
     const t1Data = getRunsPerOver(team1Deliveries);
@@ -227,10 +235,11 @@ function populateDashboard(meta, deliveries) {
         document.getElementById('hero-p2-lbl').textContent = `Batting · ${indBatters[1].runs}${asterisk}(${indBatters[1].balls})`;
     }
 
-    // Player 3 (Top Opponent Bowler)
-    if (oppBowlers.length > 0) {
-        document.getElementById('hero-p3-val').textContent = oppBowlers[0].player;
-        document.getElementById('hero-p3-lbl').textContent = `Bowling · ${oppBowlers[0].wickets}/${oppBowlers[0].runs} · ${oppBowlers[0].overs}ov`;
+    // Player 3 (Highest Wicket Taker in match)
+    const allBowlers = matchBowling.sort((a, b) => b.wickets - a.wickets);
+    if (allBowlers.length > 0) {
+        document.getElementById('hero-p3-val').textContent = allBowlers[0].player;
+        document.getElementById('hero-p3-lbl').textContent = `Bowling · ${allBowlers[0].wickets}/${allBowlers[0].runs_conceded} · ${allBowlers[0].overs}ov`;
     } else {
         document.getElementById('hero-p3-val').textContent = "N/A";
         document.getElementById('hero-p3-lbl').textContent = "Bowling · N/A";
@@ -241,24 +250,41 @@ function populateDashboard(meta, deliveries) {
     document.getElementById('hero-p4-lbl').textContent = meta.win_margin ? `Won by ${meta.win_margin}` : (meta.winner || 'N/A');
 
     // Update Stat Cards (using Team 1 as the primary focus for now)
-    const statVals = document.querySelectorAll('.stat-val');
-    if(statVals.length >= 4) {
-        // Total Runs
-        statVals[0].textContent = t1Data.total;
-        
-        // Boundary % (Runs from boundaries / Total runs)
+    const totalRunsEl = document.getElementById('stat-total-runs');
+    if (totalRunsEl) totalRunsEl.textContent = t1Data.total;
+    
+    const bdryPctEl = document.getElementById('stat-bdry-pct');
+    if (bdryPctEl) {
         const boundaryRuns = (t1Data.fours * 4) + (t1Data.sixes * 6);
         const bdryPct = t1Data.total > 0 ? Math.round((boundaryRuns / t1Data.total) * 100) : 0;
-        statVals[2].innerHTML = `${bdryPct}<span style="font-size:16px;font-weight:500;color:var(--text-muted)">%</span>`;
-        
-        const trendLabels = document.querySelectorAll('.trend-up');
-        if(trendLabels.length >= 3) {
-            trendLabels[2].innerHTML = `↑ 4s: ${t1Data.fours}&nbsp;&nbsp;&nbsp;6s: ${t1Data.sixes}`;
-        }
-        
-        // Dot Ball %
+        bdryPctEl.innerHTML = `${bdryPct}<span style="font-size:16px;font-weight:500;color:var(--text-muted)">%</span>`;
+    }
+
+    const bdryTrendEl = document.getElementById('stat-bdry-trend');
+    if (bdryTrendEl) {
+        bdryTrendEl.innerHTML = `<span class="trend-up">↑ 4s: ${t1Data.fours}</span><span class="trend-lbl">&nbsp;6s: ${t1Data.sixes}</span>`;
+    }
+
+    const dotPctEl = document.getElementById('stat-dot-pct');
+    if (dotPctEl) {
         const dotPct = t1Data.ballsFaced > 0 ? Math.round((t1Data.dotBalls / t1Data.ballsFaced) * 100) : 0;
-        statVals[3].innerHTML = `${dotPct}<span style="font-size:16px;color:var(--text-muted)">%</span>`;
+        dotPctEl.innerHTML = `${dotPct}<span style="font-size:16px;color:var(--text-muted)">%</span>`;
+    }
+
+    const partnershipEl = document.getElementById('stat-partnership');
+    if (partnershipEl) {
+        partnershipEl.textContent = t1Data.highestPartnership;
+    }
+
+    const wicketsEl = document.getElementById('stat-wickets');
+    if (wicketsEl) {
+        wicketsEl.textContent = t1Data.wickets;
+    }
+
+    const crrEl = document.getElementById('stat-crr');
+    if (crrEl) {
+        let crr = t1Data.overs > 0 ? (t1Data.total / t1Data.overs).toFixed(2) : "0.00";
+        crrEl.textContent = crr;
     }
 
     // Replace Chart Data
