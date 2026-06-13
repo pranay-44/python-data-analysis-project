@@ -1,55 +1,119 @@
-# Cricket Data Analytical Dashboard
+🏏 CricVerse — India ODI World Cup Analytics Dashboard
 
-A web app I built to explore and visualise IPL/cricket match data. You can see batting and bowling stats, run rates, partnerships, wicket timelines, and AI-generated match commentary — all from a clean dashboard in your browser.
 
----
+Every Ball. Every Angle. Every Edge.
 
-## What this project does
 
-I wanted a way to make sense of raw cricket data without staring at spreadsheets. So I built a small Flask server that reads processed JSON files and exposes them as API endpoints, and a single-page frontend that pulls that data and renders charts and tables interactively.
 
-The data pipeline (in `etl.py`) handles the heavy lifting — cleaning raw match data and saving it as structured JSON files that the app uses at runtime.
+A full-stack cricket analytics web application that visualizes India's performance across all 6 ICC Men's ODI World Cup editions (2003–2023). Built with a Python ETL pipeline, Flask REST API, and a vanilla HTML/CSS/JS frontend featuring real match data, worm graphs, match timelines, and per-edition match analysis.
 
----
 
-## Project layout
-python-data-analysis-project/
-├── backend/           → Flask app (serves API + static files)
-│   └── app.py
-├── frontend/          → The actual web page
-│   └── cricverse-complete.html
+📸 Project Overview
+
+CricVerse lets you explore every India match from the 2003 to 2023 World Cups — click any match to see live-style scorecard stats, boundary percentages, partnership data, worm charts, and ball-by-ball timelines, all powered by real Cricsheet data.
+
+
+🗂️ Project Structure
+
+cricket-analytics-dashboard/
+├── backend/
+│   └── app.py                  # Flask REST API server
+├── frontend/
+│   ├── cricverse-complete.html # Single-page dashboard UI
+│   └── script.js               # All frontend logic & data rendering
 ├── data/
-│   └── processed/     → JSON files the app reads from
-├── notebook/          → Jupyter notebooks (exploratory analysis)
-├── etl.py             → Script to process raw data into JSON
-└── requirements.txt
+│   ├── raw/
+│   │   └── world_cup_all/      # Raw Cricsheet JSON files (not tracked in git)
+│   └── processed/              # ETL output JSON files (not tracked in git)
+├── notebook/
+│   └── Analysis.ipynb          # Exploratory data analysis notebook
+├── etl.py                      # ETL pipeline — processes raw data to JSON
+├── requirements.txt            # Python dependencies
+└── README.md
 
----
 
-## Running it locally
+⚙️ Tech Stack
 
-You'll need Python 3.8+ installed.
+Backend
 
-```bash
-# Initialise a repo (if not done yet)
-git init
-# Add all project files (excluding venv and .gitignore)
-git add .
-# First commit
-git commit -m "Initial commit – pastel UI, SPA ready"
-# Add remote origin (replace the placeholder URL)
-git remote add origin <YOUR_GITHUB_REPO_URL>
-# Rename default branch to main (optional but recommended)
-git branch -M main
-# Push to GitHub
-git push -u origin main
-```
+TechPurposePython 3.xCore languageFlaskREST API server & HTML template servingFlask-CORSCross-origin request handlingpathlibCross-platform file path resolutionjsonJSON read/write for processed datacollections.defaultdictAccumulator pattern in ETL pipeline
 
-## 🤝 Contributing
-Feel free to open issues or submit pull requests. Follow the existing code style and keep the UI consistent with the pastel colour scheme.
+Data & ETL
 
-## 📄 License
-This project is licensed under the **MIT License** – see the `LICENSE` file for details.
+TechPurposeCricsheet JSONBall-by-ball match data source (open data)Python ETL pipeline (etl.py)Filters, parses and transforms raw match dataNumPyNumerical operations in analysis notebookPandasData manipulation in analysis notebookJupyter NotebookExploratory data analysisipykernelJupyter kernel support
 
----
-*Happy coding and enjoy the clean, pastel‑themed cricket analytics dashboard!*
+Frontend
+
+TechPurposeHTML5 / CSS3Single-page dashboard layout & stylingVanilla JavaScript (ES6+)All interactivity, data fetching, DOM renderingChart.js 4.4.1Worm graph, Manhattan chart, Run rate chartCanvas APIAnimated stadium background on landing pageCSS VariablesDark theme design systemGoogle FontsBarlow + Barlow Condensed typographyFetch APIAsync REST API calls to Flask backend
+
+
+🚀 Getting Started
+
+1. Clone the repo
+
+bashgit clone https://github.com/pranay-44/python-data-analysis-project.git
+cd python-data-analysis-project
+
+2. Install dependencies
+
+bashpip install flask flask-cors
+
+3. Download match data
+
+Download the ICC Men's Cricket World Cup JSON pack from Cricsheet.org and extract it to:
+
+data/raw/world_cup_all/
+
+4. Run the ETL pipeline
+
+bashpython etl.py
+
+This processes all raw JSON files and outputs 4 files to data/processed/:
+
+
+matches.json — match metadata for all 49 India WC matches
+deliveries.json — ball-by-ball delivery data
+batting.json — per-player batting stats per match
+bowling.json — per-player bowling stats per match
+
+
+5. Start the Flask server
+
+bashpython backend/app.py
+
+6. Open in browser
+
+http://127.0.0.1:5000
+
+
+📊 Features
+
+
+Landing page — animated stadium canvas background with CTA buttons
+Dashboard — hero scorecard, stat cards, worm/run rate/manhattan chart tabs, match timeline
+Match Analysis page — all 49 India matches grouped by World Cup edition (2003–2023) with W/L/NR badges, venue info, and win margins
+Click any match → dashboard instantly updates with real batting, bowling, and delivery data for that match
+Worm graph — cumulative runs per over for both teams
+Manhattan chart — runs scored per over
+Run rate chart — over-by-over run rate progression
+Timeline — key events (wickets, fours, sixes) from India's innings
+
+
+
+📁 Data Source
+
+Ball-by-ball data sourced from Cricsheet.org — a free, open dataset of cricket matches in JSON format. Raw data files are not included in this repository due to size.
+
+Editions covered: 2003 · 2007 · 2011 · 2015 · 2019 · 2023
+Total matches: 49 India matches across all editions
+
+
+🔌 API Endpoints
+
+EndpointDescriptionGET /api/matchesAll 49 India WC matchesGET /api/deliveries/<match_id>Ball-by-ball deliveries for a matchGET /api/batting/<match_id>Batting scorecard for a matchGET /api/bowling/<match_id>Bowling figures for a match
+
+
+👤 Author
+
+Pranay Bhalerao
+BSc Information Technology Student
