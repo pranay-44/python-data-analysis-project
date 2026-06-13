@@ -1,51 +1,66 @@
-from flask import Flask, jsonify, render_template, send_from_directory
+import os
+import json
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 import pathlib
-import json
-import os
 
-# Resolve paths relative to this file (backend/app.py)
-BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
-FRONTEND_DIR = str(BASE_DIR / "frontend")
-DATA_DIR = BASE_DIR / "data" / "processed"
+BASE_DIR      = pathlib.Path(__file__).resolve().parent.parent
+FRONTEND_DIR  = str(BASE_DIR / "frontend")
+PROCESSED_DIR = BASE_DIR / "data" / "processed"
 
 app = Flask(
     __name__,
     static_folder=FRONTEND_DIR,
-    static_url_path="",              # serve static files from root URL
-    template_folder=FRONTEND_DIR
+    static_url_path="",
+    template_folder=FRONTEND_DIR,
 )
-
-# Enable CORS for development
 CORS(app)
 
-def load_json(name: str):
-    path = DATA_DIR / f"{name}.json"
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+# ── Load processed JSON once into memory at startup ──
+_cache = {}
 
-# ---------- UI routes ----------
+def _load(fname):
+    if fname not in _cache:
+        path = PROCESSED_DIR / fname
+        with open(path, "r", encoding="utf-8") as f:
+            _cache[fname] = json.load(f)
+    return _cache[fname]
+
+def load_matches():
+    return _load("matches.json")
+
+def load_deliveries(match_id):
+    return [d for d in _load("deliveries.json") if d.get("match_id") == match_id]
+
+def load_batting(match_id):
+    return [b for b in _load("batting.json") if b.get("match_id") == match_id]
+
+def load_bowling(match_id):
+    return [b for b in _load("bowling.json") if b.get("match_id") == match_id]
+
+# ── UI route ──
 @app.route("/")
 @app.route("/cricverse-complete.html")
 def dashboard():
     return render_template("cricverse-complete.html")
 
-# ---------- API endpoints ----------
+# ── API endpoints ──
 @app.get("/api/matches")
 def api_matches():
-    return jsonify(load_json("matches"))
+    return jsonify(load_matches())
 
-@app.get("/api/deliveries")
-def api_deliveries():
-    return jsonify(load_json("deliveries"))
+# <path:match_id> handles match IDs that contain dashes without Flask misrouting them
+@app.get("/api/deliveries/<path:match_id>")
+def api_deliveries(match_id):
+    return jsonify(load_deliveries(match_id))
 
-@app.get("/api/batting")
-def api_batting():
-    return jsonify(load_json("batting"))
+@app.get("/api/batting/<path:match_id>")
+def api_batting(match_id):
+    return jsonify(load_batting(match_id))
 
-@app.get("/api/bowling")
-def api_bowling():
-    return jsonify(load_json("bowling"))
+@app.get("/api/bowling/<path:match_id>")
+def api_bowling(match_id):
+    return jsonify(load_bowling(match_id))
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
