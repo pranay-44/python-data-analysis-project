@@ -1,17 +1,12 @@
 🏏 CricVerse — India ODI World Cup Analytics Dashboard
 
-
 Every Ball. Every Angle. Every Edge.
 
-
-
 A full-stack cricket analytics web application that visualizes India's performance across all 6 ICC Men's ODI World Cup editions (2003–2023). Built with a Python ETL pipeline, Flask REST API, and a vanilla HTML/CSS/JS frontend featuring real match data, worm graphs, match timelines, and per-edition match analysis.
-
 
 📸 Project Overview
 
 CricVerse lets you explore every India match from the 2003 to 2023 World Cups — click any match to see live-style scorecard stats, boundary percentages, partnership data, worm charts, and ball-by-ball timelines, all powered by real Cricsheet data.
-
 
 🗂️ Project Structure
 
@@ -30,7 +25,6 @@ cricket-analytics-dashboard/
 ├── etl.py                      # ETL pipeline — processes raw data to JSON
 ├── requirements.txt            # Python dependencies
 └── README.md
-
 
 ⚙️ Tech Stack
 
