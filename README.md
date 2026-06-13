@@ -1,5 +1,10 @@
 🏏 CricVerse — India ODI World Cup Analytics Dashboard
 
+## 🌐 Live Demo
+👉 **[https://cricverse-pcb2.onrender.com](https://cricverse-pcb2.onrender.com)**
+
+> ⚠️ Hosted on Render free tier — may take 30-60 seconds to wake up on first visit.
+
 Every Ball. Every Angle. Every Edge.
 
 A full-stack cricket analytics web application that visualizes India's performance across all 6 ICC Men's ODI World Cup editions (2003–2023). Built with a Python ETL pipeline, Flask REST API, and a vanilla HTML/CSS/JS frontend featuring real match data, worm graphs, match timelines, and per-edition match analysis.
